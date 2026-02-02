@@ -55,10 +55,10 @@ If game_over is true → tell user to type "reset" to play again, then stop.
 
 ## Step 3: Parse User's Move
 Interpret the user's input:
-- "rock", "r", "✊" → rock
-- "paper", "p", "🖐️" → paper
-- "scissors", "s", "✌️" → scissors
-- "bomb", "b", "💣" → bomb
+- "rock", "r", "✊", or anything which means rock (intent) → rock
+- "paper", "p", "🖐️", or anything which means paper (intent) → paper
+- "scissors", "s", "✌️", or anything which means scissors (intent) → scissors
+- "bomb", "b", "💣", or anything which means bomb (intent) → bomb
 - Multiple moves or unclear → UNCLEAR
 - Typos or nonsense → UNCLEAR
 
