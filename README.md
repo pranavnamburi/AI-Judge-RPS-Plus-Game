@@ -130,6 +130,9 @@ echo "GOOGLE_API_KEY=your_key" > rps_judge_agent/.env
 
 # Run the game
 adk run rps_judge_agent
+
+#Optional(Agent in web interface)
+adk web
 ```
 
 ---
