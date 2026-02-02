@@ -66,26 +66,16 @@ This project demonstrates **prompt-driven game logic**:
 ## Why This Prompt Structure?
 
 ### 1. Rules in Prompts, Not Code
-The assignment requires: *"Avoid hardcoding logic in code as much as possible"*
-
-Game rules are in `prompts_judge.py`:
-- Rock/paper/scissors win conditions
-- Bomb beats everything (once per player)
-- VALID/INVALID/UNCLEAR classification
+To ensure flexibility and keep logic separate from implementation, all game rules are encoded directly in `prompts_judge.py`. This avoids hardcoding business logic in Python, making the system more adaptable to rule changes (e.g., adding lizard/spock).
 
 ### 2. Clean Separation of Concerns
-The assignment requires: *"Clean separation of intent, game logic, response"*
-
-- **Intent**: LLM parses user's free-text input
-- **Game Logic**: LLM applies rules from prompt
-- **Response**: LLM generates explanation + calls commit_turn()
+The architecture follows a strict separation of duties:
+- **Intent**: The LLM handles natural language parsing (e.g., understanding that "I pick the explosive one" means "bomb").
+- **Game Logic**: The rules engine lives in the prompt, where the LLM determines validity and outcomes.
+- **Response**: The LLM generates human-readable explanations, while Python handles the state commitment.
 
 ### 3. Explainability
-The assignment requires: *"Ability to explain decisions"*
-
-Every round includes:
-- Decision: VALID / INVALID / UNCLEAR
-- Reason: "rock beats scissors" or "bomb already used"
+A key feature of this design is transparency. Every decision includes a specific reason (e.g., "rock beats scissors" or "bomb already used"), ensuring players understand exactly why they won, lost, or had a turn wasted.
 
 ---
 
@@ -162,9 +152,3 @@ Score: You 1 | Bot 0 | Draws 0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Next: rock, paper, scissors, or bomb
 ```
-
----
-
-## License
-
-MIT
